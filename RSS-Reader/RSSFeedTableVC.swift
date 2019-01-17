@@ -10,8 +10,13 @@ import UIKit
 
 class RSSFeedTableVC: UITableViewController {
 
+    let core = CoreRSS()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        core.getData { (error) in
+            print(error)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
