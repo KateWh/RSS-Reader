@@ -11,8 +11,9 @@ import FeedKit
 
 class CoreRSS {
     var feed: [RSSFeedItem] = []
+    
     func getData(_ completionHandler: @escaping (Error?) -> Void) {
-        let feedURL = URL(string: "http://images.apple.com/main/rss/hotnews/hotnews.rss")!
+        let feedURL = URL(string: "https://www.wired.com/feed/rss")!
         let parser = FeedParser(URL: feedURL) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
         // Parse asynchronously, not to block the UI.
         parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
@@ -22,11 +23,11 @@ class CoreRSS {
                     self.feed = feed
                 }
                 completionHandler(result.error)
-                //result.isSuccess { (resu) in
-                // return error
             }
         }
     }
+    
+    
     
 }
 

@@ -1,16 +1,22 @@
 PODS:
   - FeedKit (8.0.0)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
 
 DEPENDENCIES:
   - FeedKit
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FeedKit
+    - SDWebImage
 
 SPEC CHECKSUMS:
   FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: a02fa95cf950b4b0c7522b527c3530a53c670b26
+PODFILE CHECKSUM: eb497abd8e87af15353d2c2d09dc52d2a1e835c5
 
 COCOAPODS: 1.5.3

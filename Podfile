@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'RSS-Reader' do
   pod 'FeedKit'
+  pod 'SDWebImage'
 
 end

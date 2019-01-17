@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58229AFB21F12B5A0084AA56 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58229AFA21F12B5A0084AA56 /* FeedCell.swift */; };
 		B7ABD7878D59017EA5B4EA97 /* Pods_RSS_Reader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B67C77CE9C7B5DC21C27A99 /* Pods_RSS_Reader.framework */; };
 		C6D40D9A21EFD1160094238E /* CoreRSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D40D9921EFD1160094238E /* CoreRSS.swift */; };
 		C6D595BC21EFAC7C00419F57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D595BB21EFAC7C00419F57 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58229AFA21F12B5A0084AA56 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		764D8894ED731BCD4949AB06 /* Pods-RSS-Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSS-Reader/Pods-RSS-Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		9B67C77CE9C7B5DC21C27A99 /* Pods_RSS_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSS_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D40D9921EFD1160094238E /* CoreRSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRSS.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				C6D595BB21EFAC7C00419F57 /* AppDelegate.swift */,
 				C6D595BD21EFAC7C00419F57 /* RSSFeedTableVC.swift */,
+				58229AFA21F12B5A0084AA56 /* FeedCell.swift */,
 				C6D595BF21EFAC7C00419F57 /* Main.storyboard */,
 				C6D40D9921EFD1160094238E /* CoreRSS.swift */,
 				C6D595C521EFAC7D00419F57 /* Assets.xcassets */,
@@ -195,12 +198,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RSS-Reader/Pods-RSS-Reader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -215,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6D595BE21EFAC7C00419F57 /* RSSFeedTableVC.swift in Sources */,
+				58229AFB21F12B5A0084AA56 /* FeedCell.swift in Sources */,
 				C6D40D9A21EFD1160094238E /* CoreRSS.swift in Sources */,
 				C6D595C421EFAC7C00419F57 /* RSS_Reader.xcdatamodeld in Sources */,
 				C6D595BC21EFAC7C00419F57 /* AppDelegate.swift in Sources */,
