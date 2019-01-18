@@ -10,6 +10,7 @@ import Foundation
 import FeedKit
 
 class CoreRSS {
+
     var feed: [RSSFeedItem] = []
     
     func getData(_ completionHandler: @escaping (Error?) -> Void) {
@@ -26,8 +27,6 @@ class CoreRSS {
             }
         }
     }
-    
-    
     
 }
 

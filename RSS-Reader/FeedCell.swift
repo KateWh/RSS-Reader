@@ -10,12 +10,13 @@ import UIKit
 
 class FeedCell: UITableViewCell {
     
+    @IBOutlet weak var category: UILabel!
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelSubtitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
+    
 }
