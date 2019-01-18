@@ -12,6 +12,7 @@ import SDWebImage
 class RSSFeedTableVC: UITableViewController {
 
     let core = CoreRSS()
+    // refresh tableView
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
@@ -24,7 +25,8 @@ class RSSFeedTableVC: UITableViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         updateData()
     }
-
+    
+    // selector of refresher
     @objc func updateData() {
         core.getData { (error) in
             if error != nil {
@@ -34,6 +36,7 @@ class RSSFeedTableVC: UITableViewController {
                 self.present(alertError, animated: true)
             } else {
                 self.tableView.reloadData()
+                // stop refresh wheel
                 self.refreshControl?.endRefreshing()
             }
         }
@@ -49,7 +52,7 @@ class RSSFeedTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 430
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

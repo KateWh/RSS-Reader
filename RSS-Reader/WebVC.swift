@@ -15,6 +15,7 @@ class WebVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // load data from request url
         webViewNews.loadRequest(URLRequest(url: newsLink!))
     }
 

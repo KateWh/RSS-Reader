@@ -13,6 +13,7 @@ class CoreRSS {
 
     var feed: [RSSFeedItem] = []
     
+    // get data from rss resource
     func getData(_ completionHandler: @escaping (Error?) -> Void) {
         let feedURL = URL(string: "https://www.wired.com/feed/rss")!
         let parser = FeedParser(URL: feedURL) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
