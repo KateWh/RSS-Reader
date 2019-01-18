@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FeedKit
 
 class FeedCell: UITableViewCell {
     
@@ -17,6 +18,23 @@ class FeedCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    func updateCell(withFeedItem feedItem: RSSFeedItem) {
+        var imageLink = ""
+        var category = ""
+
+        for media in (feedItem.media?.mediaThumbnails)! {
+            imageLink = media.attributes?.url ?? "No image"
+        }
+        for categories in feedItem.categories! {
+            category = categories.value ?? "None"
+        }
+
+        self.myImageView.sd_setImage(with: URL(string: imageLink), completed: nil)
+        self.labelTitle.text = feedItem.title
+        self.labelSubtitle.text = feedItem.description
+        self.category.text = category
     }
     
 }

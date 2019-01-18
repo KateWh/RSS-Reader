@@ -12,26 +12,36 @@ import SDWebImage
 class RSSFeedTableVC: UITableViewController {
 
     let core = CoreRSS()
-    var newsLink = URL(string: "")
-    
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        return refreshControl
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.refreshControl = refresher
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        updateData()
+    }
+
+    @objc func updateData() {
         core.getData { (error) in
-                if error != nil {
-                    let alertError = UIAlertController(title: "\(String(describing: error))", message: "", preferredStyle: .alert)
-                alertError.addAction(UIAlertAction(title: "Try again!", style: .default, handler: nil))
+            if error != nil {
+                let alertError = UIAlertController(title: "Failed to load feed", message: "", preferredStyle: .alert)
+                alertError.addAction(UIAlertAction(title: "Try again!", style: .default, handler: { action in self.updateData() }))
                 alertError.addAction(UIAlertAction(title: "Cancel", style: .cancel , handler: nil))
-                    self.present(alertError, animated: true)
+                self.present(alertError, animated: true)
             } else {
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        newsLink = URL(string: core.feed[indexPath.row].link!)
-        self.performSegue(withIdentifier: "goToNews", sender: self)
+        let newsLink = URL(string: core.feed[indexPath.row].link!)
+        self.performSegue(withIdentifier: "goToNews", sender: newsLink)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,27 +54,13 @@ class RSSFeedTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
-        var imageLink = ""
-        var category = ""
-
-        for media in (core.feed[indexPath.row].media?.mediaThumbnails)! {
-            imageLink = media.attributes?.url ?? "No image"
-        }
-        for i in core.feed[indexPath.row].categories! {
-            category = i.value ?? "None"
-        }
-
-        cell.myImageView.sd_setImage(with: URL(string: imageLink), completed: nil)
-        cell.labelTitle.text = core.feed[indexPath.row].title
-        cell.labelSubtitle.text = core.feed[indexPath.row].description
-        cell.category.text = category
-        print("\(String(describing: core.feed[indexPath.row].link))")
+        cell.updateCell(withFeedItem: core.feed[indexPath.row])
         return cell
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let WebVC = segue.destination as? WebVC
-        WebVC?.newsLink = newsLink
+        WebVC?.newsLink = sender as? URL
     }
     
 }

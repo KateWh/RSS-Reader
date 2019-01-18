@@ -11,7 +11,7 @@ import UIKit
 class WebVC: UIViewController {
 
     @IBOutlet weak var webViewNews: UIWebView!
-    var newsLink = URL(string: "")
+    var newsLink: URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()
