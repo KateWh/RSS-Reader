@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import WebKit
 
 class WebVC: UIViewController {
 
-    @IBOutlet weak var webViewNews: UIWebView!
+    @IBOutlet weak var webViewNews: WKWebView!
     var newsLink: URL?
+    @IBOutlet weak var progressViewNews: UIProgressView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // load data from request url
-        webViewNews.loadRequest(URLRequest(url: newsLink!))
+        webViewNews.load(URLRequest(url: newsLink!))
+        progressViewNews.progress = 0.0
+        webViewNews.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
     }
 
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressViewNews.isHidden = webViewNews.estimatedProgress == 1
+            progressViewNews.setProgress(Float(webViewNews.estimatedProgress), animated: true)
+        }
+    }
+    
 }

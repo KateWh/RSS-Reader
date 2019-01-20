@@ -32,7 +32,7 @@ class RSSFeedTableVC: UITableViewController {
             if error != nil {
                 let alertError = UIAlertController(title: "Failed to load feed", message: "", preferredStyle: .alert)
                 alertError.addAction(UIAlertAction(title: "Try again!", style: .default, handler: { action in self.updateData() }))
-                alertError.addAction(UIAlertAction(title: "Cancel", style: .cancel , handler: nil))
+                alertError.addAction(UIAlertAction(title: "Cancel", style: .cancel , handler: { action in self.refreshControl?.endRefreshing() }))
                 self.present(alertError, animated: true)
             } else {
                 self.tableView.reloadData()

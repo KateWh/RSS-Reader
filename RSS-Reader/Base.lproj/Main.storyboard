@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oSV-ca-a3v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oSV-ca-a3v">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -139,22 +138,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1O-EY-g2Q">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </webView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLF-5e-bmn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="69R-AS-VAs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="2yD-EW-met"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.8706822395324707" green="0.84635646977737378" blue="0.82327117245428683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mI2-wM-rwI" firstAttribute="trailing" secondItem="s1O-EY-g2Q" secondAttribute="trailing" id="LKM-yD-QXP"/>
-                            <constraint firstItem="s1O-EY-g2Q" firstAttribute="top" secondItem="mI2-wM-rwI" secondAttribute="top" id="anc-tN-cMX"/>
-                            <constraint firstItem="mI2-wM-rwI" firstAttribute="bottom" secondItem="s1O-EY-g2Q" secondAttribute="bottom" id="b4P-aA-Aq6"/>
-                            <constraint firstItem="s1O-EY-g2Q" firstAttribute="leading" secondItem="mI2-wM-rwI" secondAttribute="leading" id="ojT-oT-1U4"/>
+                            <constraint firstItem="mI2-wM-rwI" firstAttribute="trailing" secondItem="69R-AS-VAs" secondAttribute="trailing" id="8Ih-S1-s81"/>
+                            <constraint firstItem="69R-AS-VAs" firstAttribute="leading" secondItem="mI2-wM-rwI" secondAttribute="leading" id="Eov-86-j4Z"/>
+                            <constraint firstItem="mI2-wM-rwI" firstAttribute="bottom" secondItem="LLF-5e-bmn" secondAttribute="bottom" id="UMT-kD-q4j"/>
+                            <constraint firstItem="mI2-wM-rwI" firstAttribute="top" secondItem="69R-AS-VAs" secondAttribute="bottom" constant="-2" id="Xhv-1U-oqj"/>
+                            <constraint firstItem="mI2-wM-rwI" firstAttribute="trailing" secondItem="LLF-5e-bmn" secondAttribute="trailing" id="qQE-9e-GIb"/>
+                            <constraint firstItem="LLF-5e-bmn" firstAttribute="leading" secondItem="mI2-wM-rwI" secondAttribute="leading" id="qdG-e5-Do9"/>
+                            <constraint firstItem="mI2-wM-rwI" firstAttribute="top" secondItem="LLF-5e-bmn" secondAttribute="top" constant="64" id="qjK-zT-6Ky"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mI2-wM-rwI"/>
                     </view>
                     <connections>
-                        <outlet property="webViewNews" destination="s1O-EY-g2Q" id="l1C-EB-6To"/>
+                        <outlet property="progressViewNews" destination="69R-AS-VAs" id="GG1-ZB-wJc"/>
+                        <outlet property="webViewNews" destination="LLF-5e-bmn" id="nTa-qP-iBW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yhh-Q3-WgY" userLabel="First Responder" sceneMemberID="firstResponder"/>
