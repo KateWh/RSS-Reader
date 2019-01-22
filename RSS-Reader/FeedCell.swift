@@ -20,7 +20,7 @@ class FeedCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    // essembled the cell
+    // assembled the cell
     func updateCell(withFeedItem feedItem: RSSFeedItem) {
         var imageLink = ""
         var category = ""

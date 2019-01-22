@@ -24,10 +24,8 @@ class WebVC: UIViewController {
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
-            progressViewNews.isHidden = webViewNews.estimatedProgress == 1
             progressViewNews.setProgress(Float(webViewNews.estimatedProgress), animated: true)
-        }
+            progressViewNews.isHidden = webViewNews.estimatedProgress == 1
     }
     
 }
