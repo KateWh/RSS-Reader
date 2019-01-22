@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import RSS_Reader
-@testable import Pods_RSS_Reader
 @testable import FeedKit
 
 class RSS_ReaderTests: XCTestCase {

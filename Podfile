@@ -8,3 +8,9 @@ target 'RSS-Reader' do
   pod 'SDWebImage'
 
 end
+
+target 'RSS-ReaderTests' do
+    inherit! :search_paths
+    pod 'FeedKit'
+    pod 'SDWebImage'
+end
